@@ -1,6 +1,6 @@
 {
   "name": "tibia-minimap-png",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A helper to generate PNGs that are compatible with Tibia 11’s minimap.",
   "homepage": "https://mths.be/tibiamaps",
   "main": "index.js",
