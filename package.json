@@ -1,0 +1,38 @@
+{
+  "name": "tibia-minimap-png",
+  "version": "0.0.0",
+  "description": "A helper to generate PNGs that are compatible with Tibia 11’s minimap.",
+  "homepage": "https://mths.be/tibiamaps",
+  "main": "index.js",
+  "keywords": [
+    "mmorpg",
+    "tibia",
+    "tibia-maps"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tibiamaps/tibia-minimap-png.git"
+  },
+  "bugs": "https://github.com/tibiamaps/tibia-minimap-png/issues",
+  "files": [
+    "LICENSE-MIT.txt",
+    "chunks/",
+    "create-chunk.js",
+    "index.js"
+  ],
+  "scripts": {
+    "build": "node scripts/signature.js && node scripts/ihdr.js && node scripts/plte-color.js && node scripts/plte-waypoint.js && node scripts/iend.js",
+    "test": "node tests/create-images.js && ./tests/compare-pixels.sh"
+  },
+  "dependencies": {
+    "crc": "^3.4.4"
+  },
+  "devDependencies": {
+    "jsesc": "^2.5.1"
+  }
+}
