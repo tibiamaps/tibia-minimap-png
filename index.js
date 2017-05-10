@@ -6,6 +6,7 @@ const SIGNATURE = require('./chunks/signature.js');
 const IHDR = require('./chunks/ihdr.js');
 const PLTE_COLOR = require('./chunks/plte-color.js');
 const PLTE_WAYPOINT = require('./chunks/plte-waypoint.js');
+const PHYS = require('./chunks/phys.js');
 const IEND = require('./chunks/iend.js');
 
 const WIDTH = 256;
@@ -35,6 +36,7 @@ const wrapColorData = (colorData) => {
 		SIGNATURE,
 		IHDR,
 		PLTE_COLOR,
+		PHYS,
 		createChunk('IDAT', zlib.deflateSync(
 			toScanlines(
 				transposeBuffer(colorData)
@@ -49,6 +51,7 @@ const wrapWaypointData = (waypointData) => {
 		SIGNATURE,
 		IHDR,
 		PLTE_WAYPOINT,
+		PHYS,
 		createChunk('IDAT', zlib.deflateSync(
 			toScanlines(
 				transposeBuffer(waypointData)

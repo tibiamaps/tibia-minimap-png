@@ -26,7 +26,7 @@
     "index.js"
   ],
   "scripts": {
-    "build": "node scripts/signature.js && node scripts/ihdr.js && node scripts/plte-color.js && node scripts/plte-waypoint.js && node scripts/iend.js",
+    "build": "node scripts/signature.js && node scripts/ihdr.js && node scripts/plte-color.js && node scripts/plte-waypoint.js && node scripts/phys.js && node scripts/iend.js",
     "test": "node tests/create-images.js && ./tests/compare-pixels.sh"
   },
   "dependencies": {
