@@ -31,7 +31,17 @@ const toScanlines = (data) => {
 	return scanlines;
 };
 
-const wrapColorData = (colorData) => {
+const wrapColorData = (colorData, options = { overlayGrid: false }) => {
+	if (options.overlayGrid) {
+		for (let xOffset = 0; xOffset < WIDTH; xOffset++) {
+			for (let yOffset = 0; yOffset < HEIGHT; yOffset++) {
+				if (xOffset % 2 === 0 && yOffset % 2 === 0) {
+					const index = xOffset * WIDTH + yOffset;
+					colorData[index] = 0x00;
+				}
+			}
+		}
+	}
 	return Buffer.concat([
 		SIGNATURE,
 		IHDR,

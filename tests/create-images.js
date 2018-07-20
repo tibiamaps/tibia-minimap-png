@@ -11,6 +11,10 @@ const map2png = (from, to) => {
 		wrapColorData(colorData)
 	);
 	fs.writeFileSync(
+		`./tests/actual/Minimap_Color_${ to }_grid.png`,
+		wrapColorData(colorData, { overlayGrid: true })
+	);
+	fs.writeFileSync(
 		`./tests/actual/Minimap_WaypointCost_${ to }.png`,
 		wrapWaypointData(waypointData)
 	);
