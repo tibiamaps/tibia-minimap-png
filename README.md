@@ -1,4 +1,4 @@
-# `tibia-minimap-png` [![Build status](https://travis-ci.org/tibiamaps/tibia-minimap-png.svg?branch=master)](https://travis-ci.org/tibiamaps/tibia-minimap-png)
+# `tibia-minimap-png` [![Build status](https://travis-ci.org/tibiamaps/tibia-minimap-png.svg?branch=main)](https://travis-ci.org/tibiamaps/tibia-minimap-png)
 
 Given a buffer with [visual map data](https://tibiamaps.io/guides/map-file-format#visual-map-data) or [pathfinding data](https://tibiamaps.io/guides/map-file-format#pathfinding-data) from a Tibia 10-compatible `*.map` file, `tibia-minimap-png` creates a PNG buffer that is compatible with [Tibia 11’s minimap](https://tibiamaps.io/guides/minimap-file-format).
 
