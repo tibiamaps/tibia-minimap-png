@@ -1,6 +1,6 @@
-const saveChunk = require('./save.js').saveChunk;
+import { saveChunk } from './save.mjs';
 
-// pngcheck -v tests/fixtures/Minimap_Color_32256_32000_7.png | grep pHYs
+// `pngcheck -v tests/fixtures/Minimap_Color_32256_32000_7.png | grep pHYs`
 const PIXELS_PER_METER = 3780;
 const UNIT_SPECIFIER = 1;
 

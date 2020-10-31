@@ -1,13 +1,15 @@
+import { createChunk } from './create-chunk.mjs';
+
+import { SIGNATURE } from './chunks/signature.mjs';
+import { IHDR } from './chunks/ihdr.mjs';
+import { PLTE_COLOR } from './chunks/plte-color.mjs';
+import { PLTE_WAYPOINT } from './chunks/plte-waypoint.mjs';
+import { PHYS } from './chunks/phys.mjs';
+import { IEND } from './chunks/iend.mjs';
+
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const zlib = require('zlib');
-
-const createChunk = require('./create-chunk.js');
-
-const SIGNATURE = require('./chunks/signature.js');
-const IHDR = require('./chunks/ihdr.js');
-const PLTE_COLOR = require('./chunks/plte-color.js');
-const PLTE_WAYPOINT = require('./chunks/plte-waypoint.js');
-const PHYS = require('./chunks/phys.js');
-const IEND = require('./chunks/iend.js');
 
 const WIDTH = 256;
 const HEIGHT = 256;
@@ -18,7 +20,7 @@ const transposeBuffer = function(buffer) {
 			result.push(buffer[index]);
 		}
 	}
-	return new Buffer(result);
+	return Buffer.from(result);
 };
 
 const FILTER_TYPE = Buffer.from([0x00]);
@@ -31,7 +33,7 @@ const toScanlines = (data) => {
 	return scanlines;
 };
 
-const wrapColorData = (colorData, options = { overlayGrid: false }) => {
+export const wrapColorData = (colorData, options = { overlayGrid: false }) => {
 	if (options.overlayGrid) {
 		for (let xOffset = 0; xOffset < WIDTH; xOffset++) {
 			for (let yOffset = 0; yOffset < HEIGHT; yOffset++) {
@@ -56,7 +58,7 @@ const wrapColorData = (colorData, options = { overlayGrid: false }) => {
 	]);
 };
 
-const wrapWaypointData = (waypointData) => {
+export const wrapWaypointData = (waypointData) => {
 	return Buffer.concat([
 		SIGNATURE,
 		IHDR,
@@ -69,9 +71,4 @@ const wrapWaypointData = (waypointData) => {
 		)),
 		IEND,
 	]);
-};
-
-module.exports = {
-	wrapColorData,
-	wrapWaypointData,
 };

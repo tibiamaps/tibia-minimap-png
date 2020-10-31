@@ -1,4 +1,4 @@
-const saveChunk = require('./save.js').saveChunk;
+import { saveChunk } from './save.mjs';
 
 // https://www.w3.org/TR/PNG/#11IHDR
 const width = 256;
@@ -8,7 +8,7 @@ const colorType = 3;
 const compressionType = 0;
 const filterType = 0;
 const interlaceType = 0;
-const buffer = new Buffer(13);
+const buffer = Buffer.alloc(13);
 buffer.writeUInt32BE(width, 0);
 buffer.writeUInt32BE(height, 4);
 buffer.writeUInt8(bitDepth, 8);

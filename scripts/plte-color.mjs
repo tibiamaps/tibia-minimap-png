@@ -1,6 +1,6 @@
-const saveChunk = require('./save.js').saveChunk;
+import { saveChunk } from './save.mjs';
 
-// identify -verbose tests/fixtures/Minimap_Color_32256_32000_7.png
+// `identify -verbose tests/fixtures/Minimap_Color_32256_32000_7.png`
 const colorMap = new Map([
 	[0x00, { r: 0x00, g: 0x00, b: 0x00 }],
 	[0x01, { r: 0x00, g: 0x00, b: 0x33 }],

@@ -1,4 +1,4 @@
-const saveChunk = require('./save.js').saveChunk;
+import { saveChunk } from './save.mjs';
 
 // `identify -verbose tests/fixtures/Minimap_WaypointCost_32256_32000_7.png`
 const colorMap = new Map([

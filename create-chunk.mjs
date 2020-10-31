@@ -1,6 +1,8 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const crc32 = require('crc').crc32;
 
-const createChunk = (type, dataChunk) => {
+export const createChunk = (type, dataChunk) => {
 	// https://www.w3.org/TR/PNG/#5Chunk-layout
 	const lengthChunk = Buffer.alloc(4);
 	lengthChunk.writeUInt32BE(dataChunk.length, 0);
@@ -18,5 +20,3 @@ const createChunk = (type, dataChunk) => {
 	const chunk = Buffer.concat([lengthChunk, bodyChunk, crcChunk]);
 	return chunk;
 };
-
-module.exports = createChunk;

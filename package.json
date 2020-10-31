@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "A helper to generate PNGs that are compatible with Tibia 11’s minimap.",
   "homepage": "https://mths.be/tibiamaps",
-  "main": "index.js",
+  "main": "index.mjs",
   "keywords": [
     "mmorpg",
     "tibia",
@@ -22,17 +22,17 @@
   "files": [
     "LICENSE-MIT.txt",
     "chunks/",
-    "create-chunk.js",
-    "index.js"
+    "create-chunk.mjs",
+    "index.mjs"
   ],
   "scripts": {
-    "build": "node scripts/signature.js && node scripts/ihdr.js && node scripts/plte-color.js && node scripts/plte-waypoint.js && node scripts/phys.js && node scripts/iend.js",
-    "test": "node tests/create-images.js && ./tests/compare-pixels.sh"
+    "build": "node scripts/signature.mjs && node scripts/ihdr.mjs && node scripts/plte-color.mjs && node scripts/plte-waypoint.mjs && node scripts/phys.mjs && node scripts/iend.mjs",
+    "test": "node tests/create-images.mjs && ./tests/compare-pixels.sh"
   },
   "dependencies": {
-    "crc": "^3.4.4"
+    "crc": "^3.8.0"
   },
   "devDependencies": {
-    "jsesc": "^2.5.1"
+    "jsesc": "^3.0.2"
   }
 }

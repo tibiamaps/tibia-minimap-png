@@ -1,6 +1,6 @@
-const fs = require('fs');
+import fs from 'node:fs';
 
-const { wrapColorData, wrapWaypointData } = require('../index.js');
+import { wrapColorData, wrapWaypointData } from '../index.mjs';
 
 const map2png = (from, to) => {
 	const buffer = fs.readFileSync(`./tests/fixtures/${ from }.map`);
