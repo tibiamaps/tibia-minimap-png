@@ -14,13 +14,14 @@ const zlib = require('zlib');
 const WIDTH = 256;
 const HEIGHT = 256;
 const transposeBuffer = function(buffer) {
-	const result = [];
+	const result = Buffer.allocUnsafe(WIDTH * HEIGHT);
+	let outIdx = 0;
 	for (let xOffset = 0; xOffset < WIDTH; xOffset++) {
 		for (let index = xOffset; index < WIDTH * HEIGHT; index += HEIGHT) {
-			result.push(buffer[index]);
+			result[outIdx++] = buffer[index];
 		}
 	}
-	return Buffer.from(result);
+	return result;
 };
 
 const toScanlines = (data) => {
