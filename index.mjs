@@ -23,12 +23,14 @@ const transposeBuffer = function(buffer) {
 	return Buffer.from(result);
 };
 
-const FILTER_TYPE = Buffer.from([0x00]);
 const toScanlines = (data) => {
-	let scanlines = Buffer.from([]);
-	for (let index = 0; index < data.length; index += WIDTH) {
-		const scanline = data.slice(index, index + WIDTH);
-		scanlines = Buffer.concat([scanlines, FILTER_TYPE, scanline]);
+	// Pre-allocate a 65,792-byte buffer (256 rows * 257 bytes per row).
+	// Each 256-pixel row requires a 1-byte PNG filter indicator prefix before compression.
+	const scanlines = Buffer.allocUnsafe(HEIGHT * 257);
+	for (let y = 0; y < HEIGHT; y++) {
+		const offset = y * 257;
+		scanlines[offset] = 0x00;
+		scanlines.set(data.subarray(y * WIDTH, (y + 1) * WIDTH), offset + 1);
 	}
 	return scanlines;
 };
